@@ -4,7 +4,7 @@
 
 
 import os
-
+import re
 
 def get_all_main_folders() -> list:
     """Fetches all the current folders
@@ -12,7 +12,8 @@ def get_all_main_folders() -> list:
     Returns:
         list: available folders names
     """
-    return os.listdir()
+    folders = [folder for folder in os.listdir() if  re.match(r'^\d{4}', folder)]
+    return folders
 
 
 def get_folder_with_content(folder: str, subfolder='00_LEARNINGAIDS') -> str|None:

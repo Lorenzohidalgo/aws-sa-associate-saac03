@@ -1,9 +1,8 @@
 """
     Module to ease the task of crawling and preparing the necessaty objects.
 """
-
-import folder_crawler as fc
-import names_parsers as np
+from . import folder_crawler as fc
+from . import names_parsers as np
 
 
 def get_folder_structure() -> list:
@@ -28,5 +27,5 @@ def get_folder_structure() -> list:
                 images.append(image_object)
         folder_object["images"] = sorted(images, key=lambda e: (e["file_name"], e["file_order"]))
         folder_structure.append(folder_object)
-    folder_object = sorted(folder_object, key=lambda e: (e["folder_order"], e["folder_sub_order"]))
+    folder_structure = sorted(folder_structure, key=lambda e: (e["folder_order"], e["folder_sub_order"]))
     return folder_structure
