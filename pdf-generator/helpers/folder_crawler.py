@@ -15,33 +15,31 @@ def get_all_main_folders() -> list:
     return os.listdir()
 
 
-def get_folders_with_content(folders: list, subfolder='00_LEARNINGAIDS') -> list:
+def get_folder_with_content(folder: str, subfolder='00_LEARNINGAIDS') -> str|None:
     """Checks folders for available images
 
     Args:
-        folders (list): available folders
+        folder (str): folders
         subfolder (str, optional): name of subfolder. Defaults to '00_LEARNINGAIDS'.
 
     Returns:
-        list: full paths to folders with images
+        str: path to images
     """
-    valid_folders = []
-    for folder in folders:
-        try:
-            path = folder
-            if subfolder is not None:
-                path += '/' + subfolder
-            files = os.listdir(path)
-            has_images = False
-            for file in files:
-                if file.rsplit('.', maxsplit=1)[1] == 'png':
-                    has_images = True
-                    break
-            if has_images:
-                valid_folders.append(path)
-        except NotADirectoryError:
-            pass
-    return valid_folders
+    valid_folder = False
+    try:
+        path = folder
+        if subfolder is not None:
+            path += '/' + subfolder
+        files = os.listdir(path)
+        for file in files:
+            if file.rsplit('.', maxsplit=1)[1] == 'png':
+                valid_folder = True
+                break
+    except NotADirectoryError:
+        pass
+    if valid_folder:
+        return path
+    return None
 
 
 def get_all_images_from_folder(folder_path: str) -> list:
