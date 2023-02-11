@@ -10,8 +10,8 @@ def create_pdf(repo_structure: list, file_name: str) -> None:
     """Creates a PDF from the received repository structure
 
     Args:
-        repo_structure (list): 
-        file_name (str): 
+        repo_structure (list):
+        file_name (str):
     """
     with open(file_name, "wb") as file:
         for folder_object in repo_structure:
