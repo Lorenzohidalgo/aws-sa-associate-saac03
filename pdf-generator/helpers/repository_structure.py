@@ -27,5 +27,6 @@ def get_folder_structure() -> list:
                 images.append(image_object)
         folder_object["images"] = sorted(images, key=lambda e: (e["file_name"], e["file_order"]))
         folder_structure.append(folder_object)
-    folder_structure = sorted(folder_structure, key=lambda e: (e["folder_order"], e["folder_sub_order"]))
+    folder_structure = sorted(folder_structure, \
+        key=lambda e: (e["folder_order"], e["folder_sub_order"]))
     return folder_structure
