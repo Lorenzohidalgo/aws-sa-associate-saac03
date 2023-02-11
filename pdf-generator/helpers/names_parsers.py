@@ -97,3 +97,15 @@ def file_object_from_name(name: str) -> object:
     file_object["file_order"] = __get_file_order(name)
     file_object["parsed_name"] = __get_formatted_file_name(name)
     return file_object
+
+
+def get_name_from_path(path: str) -> str:
+    """Fetches the name from the provided path
+
+    Args:
+        path (str): path
+
+    Returns:
+        str: name of the folder or file
+    """
+    return path.rsplit('/', maxsplit=1)[1]
